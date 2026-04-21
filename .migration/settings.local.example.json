@@ -1,0 +1,21 @@
+{
+  "projectPath": "/caminho/absoluto/do/projeto",
+  "satellites": ["atendimento", "empresa", "common", "controleacesso", "controleacessoweb", "utilweb", "infra"],
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "app",
+    "user": "app_user",
+    "menuTable": "menu",
+    "menuUrlColumn": "url",
+    "menuStatusColumn": "status"
+  },
+  "skills": {
+    "menu-scripts": {
+      "statusInactiveValue": "INATIVO"
+    },
+    "ant-migration": {
+      "preferredTool": "maven"
+    }
+  }
+}
