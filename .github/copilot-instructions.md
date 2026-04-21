@@ -17,6 +17,7 @@ Padronizar e reutilizar jornadas de migração (RMI, JNLP, SOAP/Web Services, bu
 4. Em conflitos técnicos, escalar para `agents/tech-lead.md`.
 5. Toda skill deve publicar: entrada, ação, saída e critérios de aceite.
 6. Em projetos legados com mais de 20 anos, exigir análise aprofundada, cuidadosa e rastreável antes de qualquer remoção de integração.
+7. Nunca remover sem substituição/fallback validado; em incerteza de uso ativo, escalar para `agents/product-owner.md` com opções e impactos.
 
 ## Fluxo de Orquestração
 1. **Discovery**: inventariar código, banco, build e riscos.
@@ -31,7 +32,8 @@ Padronizar e reutilizar jornadas de migração (RMI, JNLP, SOAP/Web Services, bu
 - `agents/tech-lead.md`
 - `agents/architect.md`
 - `agents/product-owner.md`
-- `agents/dev-backend.md`
+- `agents/dev-rmi.md`
+- `agents/dev-jnlp.md`
 - `agents/dev-soap.md`
 - `agents/dev-build.md`
 - `agents/dev-database.md`
