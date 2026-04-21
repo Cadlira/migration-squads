@@ -54,6 +54,14 @@ Para novos devs/squads, siga esta ordem:
 6. **Encerramento**
    - consolida evidências, riscos residuais e próximos passos.
 
+## Guia rápido para projeto satélite/externo (ex.: Atendimento)
+
+Para rodar a skill discovery central deste repositório em um projeto legado externo, consulte:
+
+- **[docs/rodando-skill-discovery.md](docs/rodando-skill-discovery.md)**
+
+Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientações de entrada/saída/contexto e como integrar os outputs no `.migration/` do projeto consumidor.
+
 ## Como rodar com Copilot (VS Code, IntelliJ e Eclipse)
 
 > Objetivo: usar Copilot Chat para orquestrar as etapas e Copilot CLI para acelerar comandos e revisões no terminal.
