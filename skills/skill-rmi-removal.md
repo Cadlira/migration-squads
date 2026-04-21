@@ -1,7 +1,7 @@
 # Skill: rmi-removal
 
 ## Objetivo
-Substituir e remover completamente dependências RMI por integração moderna e sustentável, sem remoção destrutiva.
+Substituir integrações RMI por um padrão moderno e remover completamente as dependências legadas após validação da substituição.
 
 ## Etapas
 1. Mapear contratos e pontos de invocação RMI.

@@ -1,7 +1,11 @@
 # Skill: jnlp-removal
 
 ## Objetivo
-Eliminar completamente arquivos e referências JNLP do legado apenas com substituição validada, fallback definido ou aprovação explícita do Product Owner.
+Remover completamente arquivos e referências JNLP do legado sem quebrar fluxos ativos.
+
+## Regras de execução segura
+- A remoção só pode ocorrer após substituição validada com estratégia de fallback.
+- Se não for possível confirmar uso ativo com segurança, pausar e escalar ao Product Owner para decisão explícita.
 
 ## Checklist
 - Executar análise aprofundada (20+ anos de legado), incluindo chamadas encadeadas e módulos satélites.

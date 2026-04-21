@@ -61,7 +61,7 @@ Para novos devs/squads, siga esta ordem:
 2. **Menu Scripts** (`skills/skill-menu-scripts.md`)
    - gera SQL de auditoria e ação (SELECT → UPDATE → DELETE) para menus JNLP.
 3. **JNLP Removal** (`skills/skill-jnlp-removal.md`)
-   - remove totalmente arquivos/referências JNLP e assinatura legada no build, com substituição validada.
+   - remover totalmente arquivos/referências JNLP e assinatura legada no build, com substituição validada.
 4. **RMI Removal** (`skills/skill-rmi-removal.md`)
    - mapeia chamadas RMI e substitui por integração moderna antes da remoção completa.
 5. **SOAP Removal** (`skills/skill-soap-removal.md`)
@@ -72,8 +72,14 @@ Para novos devs/squads, siga esta ordem:
    - consolida evidências, riscos residuais e próximos passos.
 
 > Projetos legados com mais de 20 anos exigem **análise aprofundada e cuidadosa** antes de qualquer remoção estrutural. Toda decisão deve ser rastreável em `.migration/outputs/`.
->
-> Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: chamada encadeada em código que permanece), a squad deve pausar a remoção e escalar ao Product Owner para decisão com opções e impactos.
+
+### Gate de decisão para remoções (obrigatório)
+
+Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: chamada encadeada em código que permanece), a squad deve:
+
+1. pausar a remoção;
+2. escalar ao Product Owner;
+3. apresentar opções com impactos técnicos e de negócio para decisão do usuário.
 
 ## Squad especializada para remoções de legado (JNLP, RMI e SOAP)
 
