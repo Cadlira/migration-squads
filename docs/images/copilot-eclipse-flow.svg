@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#0f172a"/>
+  <rect x="40" y="40" width="880" height="460" rx="14" fill="#1e293b" stroke="#334155"/>
+  <text x="70" y="88" fill="#a78bfa" font-size="28" font-family="Arial, sans-serif">Eclipse + GitHub Copilot (Fluxo ilustrativo)</text>
+  <rect x="70" y="120" width="260" height="320" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="90" y="165" fill="#e2e8f0" font-size="19" font-family="Arial, sans-serif">1) Instalar plugin</text>
+  <text x="90" y="200" fill="#94a3b8" font-size="16" font-family="Arial, sans-serif">Marketplace / Update Site</text>
+  <rect x="350" y="120" width="260" height="320" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="370" y="165" fill="#e2e8f0" font-size="19" font-family="Arial, sans-serif">2) Login GitHub</text>
+  <text x="370" y="200" fill="#94a3b8" font-size="16" font-family="Arial, sans-serif">Copy Code and Open</text>
+  <rect x="630" y="120" width="260" height="320" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="650" y="165" fill="#e2e8f0" font-size="19" font-family="Arial, sans-serif">3) Skills de migração</text>
+  <text x="650" y="200" fill="#94a3b8" font-size="16" font-family="Arial, sans-serif">discovery, jnlp-removal,</text>
+  <text x="650" y="225" fill="#94a3b8" font-size="16" font-family="Arial, sans-serif">rmi-removal, ant-migration</text>
+  <line x1="330" y1="280" x2="350" y2="280" stroke="#a78bfa" stroke-width="4"/>
+  <line x1="610" y1="280" x2="630" y2="280" stroke="#a78bfa" stroke-width="4"/>
+  <text x="70" y="475" fill="#94a3b8" font-size="14" font-family="Arial, sans-serif">Eclipse é 100% suportado para este projeto legado.</text>
+</svg>
