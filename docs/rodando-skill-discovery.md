@@ -12,7 +12,7 @@ Use este procedimento quando:
 ## Pré-requisitos
 
 1. Repositório `migration-squads` clonado e aberto no Copilot Chat.
-2. Projeto legado externo disponível em caminho absoluto (ex.: `/home/user/dev/Atendimento`).
+2. Projeto legado externo disponível em caminho absoluto (ex.: `/home/user/dev/Atendimento` ou `C:\Users\user\dev\Atendimento`).
 3. Permissão local para criar/atualizar a pasta `.migration/` no projeto legado.
 
 ## Entradas, contexto e saídas esperadas
@@ -45,8 +45,8 @@ Abra este repositório (`migration-squads`) no VS Code, IntelliJ ou Eclipse com 
 Use prompt explícito com caminho absoluto do projeto legado:
 
 ```text
-Execute a skill discovery usando skills/skill-discovery.md para o projeto Atendimento em /home/user/dev/Atendimento.
-Considere esse projeto como alvo e gere os artefatos em /home/user/dev/Atendimento/.migration/outputs/.
+Execute a skill discovery usando skills/skill-discovery.md para o projeto Atendimento em <caminho-absoluto-do-projeto>.
+Considere esse projeto como alvo e gere os artefatos em <caminho-absoluto-do-projeto>/.migration/outputs/.
 ```
 
 ### 3) Responda o questionário da discovery
@@ -56,9 +56,9 @@ Preencha os itens solicitados (módulos, Java/servidor de aplicação, banco, ta
 
 ### 4) Valide os outputs no projeto legado
 No projeto `Atendimento`, confira:
-- `/home/user/dev/Atendimento/.migration/outputs/discovery-report.md`
-- `/home/user/dev/Atendimento/.migration/outputs/migration-plan.md` (quando a análise já sugerir próximos passos)
-- `/home/user/dev/Atendimento/.migration/outputs/validation-checklist.md` (quando houver checklist inicial de validação)
+- `<caminho-absoluto-do-projeto>/.migration/outputs/discovery-report.md`
+- `<caminho-absoluto-do-projeto>/.migration/outputs/migration-plan.md` (quando a análise já sugerir próximos passos)
+- `<caminho-absoluto-do-projeto>/.migration/outputs/validation-checklist.md` (quando houver checklist inicial de validação)
 
 ### 5) Integre os outputs com o fluxo local
 No projeto consumidor:
@@ -73,20 +73,20 @@ No projeto consumidor:
 Informe o caminho da skill explicitamente para reduzir ambiguidades. Em geral o orquestrador já está no repositório certo, mas citar `skills/skill-discovery.md` ajuda a ancorar o contexto.
 
 ```text
-Preciso executar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em /home/user/dev/Atendimento.
-Me conduza pelo questionário e gere os outputs em /home/user/dev/Atendimento/.migration/outputs/.
+Preciso executar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em <caminho-absoluto-do-projeto>.
+Me conduza pelo questionário e gere os outputs em <caminho-absoluto-do-projeto>/.migration/outputs/.
 ```
 
 ### Copilot CLI
 Use o CLI como apoio para gerar/validar comandos e prompts. Para condução completa da skill, prefira Copilot Chat na IDE.
 
 ```sh
-gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para /home/user/dev/Atendimento e liste entradas necessárias e outputs esperados"
+gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para <caminho-absoluto-do-projeto> e liste entradas necessárias e outputs esperados"
 ```
 
 ### Prompt para múltiplos satélites
 ```text
-Execute a discovery para /home/user/dev/Atendimento, considerando satélites /home/user/dev/Atendimento-API e /home/user/dev/Atendimento-Batch.
+Execute a discovery para <caminho-absoluto-atendimento>, considerando satélites <caminho-absoluto-atendimento-api> e <caminho-absoluto-atendimento-batch>.
 Consolide riscos e ordem recomendada das skills em .migration/outputs/discovery-report.md no Atendimento.
 ```
 
