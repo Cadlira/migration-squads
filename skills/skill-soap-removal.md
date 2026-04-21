@@ -1,7 +1,7 @@
 # Skill: soap-removal
 
 ## Objetivo
-Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade, preservando operação em sistemas Java complexos e acoplados (20+ anos).
+Remover completamente integrações SOAP/Web Services legadas com segurança e rastreabilidade, preservando operação em sistemas Java complexos e acoplados (20+ anos), sempre com substituição validada ou decisão explícita do Product Owner.
 
 ## Quando usar
 - Há uso de SOAP como cliente e/ou provedor no legado.
@@ -23,15 +23,17 @@ Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade
    - Identificar bibliotecas e plugins (`axis`, `axis2`, `jax-ws`, `javax.xml.ws`, `jakarta.xml.ws`).
    - Identificar geração de código (wsimport/wsdl2java) e artefatos gerados.
 4. **Mapeamento de pontos de integração**
-   - Encontrar stubs, proxies, gateways, serviços de borda, jobs e pontos batch.
-   - Registrar impacto cruzado com satélites acoplados.
+    - Encontrar stubs, proxies, gateways, serviços de borda, jobs e pontos batch.
+    - Registrar impacto cruzado com satélites acoplados.
+    - Evidenciar dependências ocultas e chamadas encadeadas antes de qualquer remoção.
 5. **Plano de substituição/migração**
    - Definir estratégia alvo (ex.: REST) e contrato equivalente.
    - Planejar coexistência (feature flag/adapter), fallback e rollback.
    - Definir testes de compatibilidade e validação de payload/erros.
 6. **Execução controlada**
-   - Migrar por operação/módulo com entregas pequenas.
-   - Remover chamadas SOAP e dependências apenas após validação.
+    - Migrar por operação/módulo com entregas pequenas.
+    - Remover chamadas SOAP e dependências apenas após validação.
+    - Se houver incerteza de uso ativo, interromper remoção e escalar ao Product Owner com opções e impactos.
 7. **Fechamento técnico**
    - Consolidar evidências, pendências e riscos residuais.
 
@@ -60,3 +62,5 @@ Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade
 - Inventário SOAP completo e revisado pelo tech lead.
 - Plano de migração aprovado com etapas reversíveis.
 - Evidências de validação registradas em outputs locais.
+- Sem referências SOAP ativas no escopo migrado após substituição validada.
+- Decisões de incerteza documentadas com aprovação do Product Owner.
