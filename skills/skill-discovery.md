@@ -16,6 +16,10 @@ Coletar contexto técnico local para orientar as demais skills sem retrabalho.
 - Inventariar targets ANT ligados a empacotamento/assinatura.
 - Registrar em `.migration/outputs/discovery-report.md` no projeto local.
 
+## Segurança de credenciais
+- Não persistir senha/token de banco no discovery report.
+- Preferir variáveis de ambiente ou mecanismo seguro local para segredos.
+
 ## Entregável mínimo
 - Resumo técnico
 - Riscos principais

@@ -26,5 +26,8 @@ DELETE FROM menu
 WHERE url ILIKE '%jnlp%';
 ```
 
+## Observação de performance
+Em tabelas grandes, `ILIKE '%jnlp%'` tende a full scan. Se necessário, use filtro mais específico ou índice funcional apropriado antes da execução em produção.
+
 ## Saída esperada
 Arquivos SQL em `.migration/outputs/sql/` do projeto local.
