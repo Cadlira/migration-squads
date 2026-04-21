@@ -9,7 +9,7 @@ Este diretório é o ponto de integração local dos projetos consumidores da in
 
 ## Exemplo de fluxo local
 1. Copiar `settings.local.example.json` para `settings.local.json` (local, não versionar segredos).
-   - ⚠️ **Obrigatório no projeto consumidor:** adicionar a linha abaixo no `.gitignore`, sem alterações:
+   - ⚠️ **Obrigatório no projeto consumidor:** adicionar no `.gitignore` a regra para esse arquivo (aceite `.migration/settings.local.json` ou `/.migration/settings.local.json`, conforme padrão do repositório local):
      `.migration/settings.local.json`
    - Falhar nesse passo pode expor credenciais e configurações sensíveis.
    - Observação: este repositório central já ignora esse arquivo, mas projetos consumidores em repositórios separados precisam repetir essa regra localmente.

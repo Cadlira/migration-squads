@@ -18,6 +18,7 @@ FROM menu
 WHERE url ILIKE 'jnlp:%'
    OR url ILIKE '%.jnlp'
    OR url ILIKE '%/jnlp/%';
+-- Opcional para produção: adicionar filtro seletivo extra (ex.: status/data).
 
 -- 002_desativacao.sql
 UPDATE menu
@@ -25,12 +26,14 @@ SET status = 'INATIVO'
 WHERE url ILIKE 'jnlp:%'
    OR url ILIKE '%.jnlp'
    OR url ILIKE '%/jnlp/%';
+-- Opcional para produção: adicionar filtro seletivo extra (ex.: status/data).
 
 -- 003_remocao.sql
 DELETE FROM menu
 WHERE url ILIKE 'jnlp:%'
    OR url ILIKE '%.jnlp'
    OR url ILIKE '%/jnlp/%';
+-- Opcional para produção: adicionar filtro seletivo extra (ex.: status/data).
 ```
 
 ## Observação de performance
