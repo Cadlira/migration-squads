@@ -26,6 +26,7 @@ Use aliases por skill para mapear particularidades locais:
 ## Adaptação de outputs
 Padronize outputs para facilitar governança:
 - `outputs/discovery-report.md`
+- `outputs/soap-inventory.md`
 - `outputs/sql/*.sql`
 - `outputs/migration-plan.md`
 - `outputs/validation-checklist.md`

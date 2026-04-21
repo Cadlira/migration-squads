@@ -34,7 +34,7 @@ Use como referência o conteúdo de `skills/skill-discovery.md`:
 ### Saídas esperadas
 - relatório de discovery em `.migration/outputs/discovery-report.md` no projeto legado;
 - riscos principais e ordem sugerida das próximas skills;
-- inventário inicial de ocorrências ligadas a JNLP, RMI e ANT.
+- inventário inicial de ocorrências ligadas a JNLP, RMI, SOAP e ANT.
 
 ## Passo a passo
 
@@ -66,7 +66,7 @@ No projeto consumidor:
    - Garanta no `.gitignore` do projeto consumidor a regra `.migration/settings.local.json`.
    - Configure o acesso ao banco com `database.passwordEnv` (ex.: `PGPASSWORD`) em vez de senha em texto plano.
 2. Mantenha `.migration/outputs/` como trilha de evidências;
-3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, ant-migration).
+3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, soap-removal, ant-migration).
 
 ## Exemplos de comandos/prompts
 
