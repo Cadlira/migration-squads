@@ -1,7 +1,12 @@
 # Skill: soap-removal
 
 ## Objetivo
-Remover completamente integrações SOAP/Web Services legadas com segurança e rastreabilidade, preservando operação em sistemas Java complexos e acoplados (20+ anos), sempre com substituição validada ou decisão explícita do Product Owner.
+Remover completamente integrações SOAP/Web Services legadas com segurança e rastreabilidade.
+
+## Premissas de segurança da migração
+- Preservar operação em sistemas Java complexos e acoplados (20+ anos).
+- Executar remoção apenas após substituição validada e fallback definido.
+- Em incerteza de uso ativo, pausar e escalar ao Product Owner para decisão explícita.
 
 ## Quando usar
 - Há uso de SOAP como cliente e/ou provedor no legado.

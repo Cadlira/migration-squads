@@ -9,3 +9,8 @@ Conduzir análise aprofundada do legado JNLP/Java Web Start e executar remoção
 - Garantir substituição operacional (novo fluxo de execução/distribuição) antes da remoção definitiva.
 - Remover JNLP somente após validação funcional e técnica da alternativa.
 - Escalar para o Product Owner quando houver incerteza de uso ativo, apresentando opções e impactos.
+
+## Critérios de aceite
+- Não há referências JNLP ativas no escopo migrado.
+- Substituição operacional e fallback foram validados e registrados em `.migration/outputs/`.
+- Dúvidas de uso ativo tiveram decisão formal do Product Owner.
