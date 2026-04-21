@@ -14,16 +14,23 @@ Gerar scripts SQL para auditoria, desativação e remoção de menus ligados a J
 -- 001_auditoria.sql
 SELECT id, name, url, status
 FROM menu
-WHERE url ILIKE '%jnlp%';
+-- Ajuste o padrão para o formato real da URL local.
+WHERE url ILIKE 'jnlp:%'
+   OR url ILIKE '%/jnlp/%'
+   OR url ILIKE '%.jnlp';
 
 -- 002_desativacao.sql
 UPDATE menu
 SET status = 'INATIVO'
-WHERE url ILIKE '%jnlp%';
+WHERE url ILIKE 'jnlp:%'
+   OR url ILIKE '%/jnlp/%'
+   OR url ILIKE '%.jnlp';
 
 -- 003_remocao.sql
 DELETE FROM menu
-WHERE url ILIKE '%jnlp%';
+WHERE url ILIKE 'jnlp:%'
+   OR url ILIKE '%/jnlp/%'
+   OR url ILIKE '%.jnlp';
 ```
 
 ## Observação de performance

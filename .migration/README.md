@@ -9,7 +9,9 @@ Este diretório é o ponto de integração local dos projetos consumidores da in
 
 ## Exemplo de fluxo local
 1. Copiar `settings.local.example.json` para `settings.local.json` (local, não versionar segredos).
-   - Adicionar `.migration/settings.local.json` no `.gitignore` **de cada projeto consumidor**.
+   - ⚠️ **Obrigatório no projeto consumidor:** adicionar a linha abaixo no `.gitignore`, sem alterações:
+     `.migration/settings.local.json`
+   - Falhar nesse passo pode expor credenciais e configurações sensíveis.
 2. Preencher path do projeto, módulos satélites e metadados de banco.
 3. Rodar `discovery` usando a configuração local.
 4. Executar skills na sequência recomendada pelo discovery.
