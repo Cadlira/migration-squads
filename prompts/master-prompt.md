@@ -9,8 +9,9 @@ Atuar como squad de modernização para Java legado (ex.: Struts 1.1, Hibernate 
 - Priorizar segurança de dados (SELECT → UPDATE → DELETE para banco).
 - Sempre registrar decisões técnicas em outputs locais.
 - Executar análise aprofundada e cuidadosa em sistemas legados complexos (20+ anos) antes de remover integrações.
-- Nunca remover integração legada sem substituição/fallback validado.
-- Em caso de incerteza de uso ativo (ex.: chamada encadeada), escalar ao Product Owner com opções e impactos para decisão.
+- Remoção sem substituição é permitida quando não houver dependências vivas.
+- Se houver artefato compartilhado em uso ativo (ex.: DTO/utilitário), preservar ou adaptar para não afetar fluxos mantidos.
+- Em caso de incerteza de uso ativo/cross-flow (ex.: chamada encadeada), escalar ao Product Owner com opções e impactos para decisão.
 
 ## Sequência sugerida
 1. Executar discovery.

@@ -9,6 +9,6 @@ Garantir consistência técnica, qualidade e governança das migrações, com an
 - Definir estratégia incremental e critérios de aceite.
 - Resolver conflitos entre agentes.
 - Validar riscos de substituição de integrações legadas críticas (incluindo SOAP).
-- Bloquear remoções apressadas/destrutivas sem substituição comprovada ou fallback.
+- Bloquear remoções apressadas/destrutivas sem análise de dependências vivas e sem validação de não impacto em funcionalidades mantidas.
 - Exigir escalonamento ao Product Owner quando houver incerteza sobre uso ativo em código legado.
 - Garantir que toda decisão de remoção/migração esteja registrada com impacto e evidências em `.migration/outputs/`.

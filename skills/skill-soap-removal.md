@@ -5,8 +5,9 @@ Remover completamente integrações SOAP/Web Services legadas com segurança e r
 
 ## Premissas de segurança da migração
 - Preservar operação em sistemas Java complexos e acoplados (20+ anos).
-- Executar remoção apenas após substituição validada e fallback definido.
-- Em incerteza de uso ativo, pausar e escalar ao Product Owner para decisão explícita.
+- É permitido remover SOAP sem substituição quando não houver dependências vivas fora do contexto removido.
+- Artefatos compartilhados com uso ativo em fluxos mantidos devem ser preservados ou adaptados.
+- Em incerteza de uso ativo/cross-flow, pausar e escalar ao Product Owner para decisão explícita.
 
 ## Quando usar
 - Há uso de SOAP como cliente e/ou provedor no legado.
@@ -31,14 +32,14 @@ Remover completamente integrações SOAP/Web Services legadas com segurança e r
     - Encontrar stubs, proxies, gateways, serviços de borda, jobs e pontos batch.
     - Registrar impacto cruzado com satélites acoplados.
     - Evidenciar dependências ocultas e chamadas encadeadas antes de qualquer remoção.
-5. **Plano de substituição/migração**
-   - Definir estratégia alvo (ex.: REST) e contrato equivalente.
-   - Planejar coexistência (feature flag/adapter), fallback e rollback.
+5. **Plano de substituição/migração (quando necessário)**
+   - Se houver dependência viva fora do contexto SOAP, definir estratégia alvo (ex.: REST) e contrato equivalente.
+   - Planejar coexistência (feature flag/adapter), fallback e rollback quando aplicável.
    - Definir testes de compatibilidade e validação de payload/erros.
 6. **Execução controlada**
     - Migrar por operação/módulo com entregas pequenas.
-    - Remover chamadas SOAP e dependências apenas após validação.
-    - Se houver incerteza de uso ativo, interromper remoção e escalar ao Product Owner com opções e impactos.
+    - Remover chamadas SOAP e dependências do fluxo descontinuado após validação de não impacto nos fluxos mantidos.
+    - Se houver incerteza de uso ativo/cross-flow, interromper remoção e escalar ao Product Owner com opções e impactos.
 7. **Fechamento técnico**
    - Consolidar evidências, pendências e riscos residuais.
 
@@ -67,5 +68,5 @@ Remover completamente integrações SOAP/Web Services legadas com segurança e r
 - Inventário SOAP completo e revisado pelo tech lead.
 - Plano de migração aprovado com etapas reversíveis.
 - Evidências de validação registradas em outputs locais.
-- Sem referências SOAP ativas no escopo migrado após substituição validada.
+- Sem referências SOAP ativas no escopo migrado e sem impacto em funcionalidades mantidas.
 - Decisões de incerteza documentadas com aprovação do Product Owner.

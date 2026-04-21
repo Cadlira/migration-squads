@@ -29,8 +29,9 @@ Este repositório não usa mais um agente genérico de desenvolvimento backend p
 Cada agente deve:
 - executar análise aprofundada e rastreável;
 - evitar remoção apressada/destrutiva;
-- só remover quando houver substituição/fallback validado;
-- escalar ao `agents/product-owner.md` com opções e impactos quando houver incerteza de uso ativo.
+- permitir remoção total sem substituição quando não houver dependências vivas fora do contexto removido;
+- preservar/adaptar artefatos compartilhados com uso ativo (ex.: DTO/utilitário) para não quebrar fluxos mantidos;
+- escalar ao `agents/product-owner.md` com opções e impactos somente quando houver incerteza de uso ativo/cross-flow.
 
 ## Como usar a infraestrutura (modelo híbrido recomendado)
 
@@ -61,11 +62,11 @@ Para novos devs/squads, siga esta ordem:
 2. **Menu Scripts** (`skills/skill-menu-scripts.md`)
    - gera SQL de auditoria e ação (SELECT → UPDATE → DELETE) para menus JNLP.
 3. **JNLP Removal** (`skills/skill-jnlp-removal.md`)
-   - remove totalmente arquivos/referências JNLP e assinatura legada no build, com substituição validada.
+   - remove totalmente arquivos/referências JNLP e assinatura legada no build; substitui apenas se houver dependência viva fora do contexto removido.
 4. **RMI Removal** (`skills/skill-rmi-removal.md`)
-   - mapeia chamadas RMI e substitui por integração moderna antes da remoção completa.
+   - mapeia chamadas RMI e remove com segurança; aplica substituição somente quando houver dependência viva fora do contexto removido.
 5. **SOAP Removal** (`skills/skill-soap-removal.md`)
-   - remove integrações SOAP legadas com plano controlado de transição (ex.: REST) e validação de fallback.
+   - remove integrações SOAP legadas sem impacto em funcionalidades mantidas; usa transição (ex.: REST) apenas quando necessário.
 6. **ANT Migration** (`skills/skill-ant-migration.md`)
    - evolui ANT ou migra para Maven/Gradle com CI reproduzível.
 7. **Encerramento**
@@ -80,6 +81,8 @@ Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativ
 1. pausar a remoção;
 2. escalar ao Product Owner;
 3. apresentar opções com impactos técnicos e de negócio para decisão do usuário.
+
+Se não houver dúvida e não existir dependência viva fora do contexto removido, a squad tem autonomia para remoção completa sem substituição.
 
 ## Squad especializada para remoções de legado (JNLP, RMI e SOAP)
 

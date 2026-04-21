@@ -10,5 +10,6 @@ Desenhar a arquitetura de transição do legado para soluções modernas.
 - Recomendar caminho de build (evoluir ANT ou migrar Maven/Gradle).
 - Planejar compatibilidade entre projetos satélites acoplados.
 - Exigir análise aprofundada e rastreável antes de qualquer remoção em legados (20+ anos).
-- Proibir remoção sem substituição/fallback ou sem aprovação explícita do Product Owner.
-- Documentar alternativas e impactos técnicos quando existirem dependências ocultas ou incerteza de uso.
+- Permitir remoção sem substituição quando não houver dependências vivas fora do contexto removido.
+- Exigir preservação/adaptação de artefatos compartilhados com uso ativo (ex.: DTO/utilitário) para evitar impacto em fluxos mantidos.
+- Documentar alternativas e impactos técnicos quando existirem dependências ocultas ou incerteza de uso (com escalonamento ao Product Owner).
