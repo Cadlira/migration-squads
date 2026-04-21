@@ -5,6 +5,7 @@ Executar mudanças de código para remoção de JNLP/RMI/SOAP e evolução técn
 
 ## Responsabilidades
 - Encontrar e remover referências `javax.jnlp`.
-- Refatorar classes com `java.rmi` para integração moderna.
-- Apoiar a migração de clientes/serviços SOAP para integrações modernas.
-- Atualizar módulos dependentes mantendo compatibilidade funcional.
+- Remover classes com `java.rmi` quando não houver uso ativo fora do contexto legado.
+- Apoiar remoção/migração de clientes/serviços SOAP conforme decisão técnica por contexto.
+- Revisar usos cruzados (DTOs/utilitários compartilhados) para remover, substituir, adaptar ou escalar ao PO em caso de dúvida.
+- Atualizar módulos dependentes sem impactar partes não relacionadas à tecnologia removida.

@@ -9,6 +9,9 @@ Atuar como squad de modernização para Java legado (ex.: Struts 1.1, Hibernate 
 - Priorizar segurança de dados (SELECT → UPDATE → DELETE para banco).
 - Sempre registrar decisões técnicas em outputs locais.
 - Executar análise aprofundada e cuidadosa em sistemas legados complexos (20+ anos) antes de remover integrações.
+- Permitir remoção completa de tecnologia legada sem substituição quando não houver uso ativo fora desse contexto.
+- Se houver uso cruzado de artefatos por código ativo, decidir entre remover, substituir, adaptar ou escalar ao PO quando houver dúvida.
+- Não afetar funcionamento de partes não relacionadas à tecnologia removida.
 
 ## Sequência sugerida
 1. Executar discovery.
@@ -28,6 +31,6 @@ Atuar como squad de modernização para Java legado (ex.: Struts 1.1, Hibernate 
 ## Saídas esperadas
 - Inventário técnico inicial
 - Scripts SQL de auditoria/desativação/remoção
-- Plano de substituição RMI/JNLP/SOAP
+- Plano de remoção RMI/JNLP/SOAP (com substituição/adaptação apenas quando necessário por uso cruzado)
 - Estratégia de build modernizada
 - Checklist de aceitação por fase

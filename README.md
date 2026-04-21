@@ -49,15 +49,22 @@ Para novos devs/squads, siga esta ordem:
 3. **JNLP Removal** (`skills/skill-jnlp-removal.md`)
    - remove arquivos/referências JNLP e assinatura legada no build.
 4. **RMI Removal** (`skills/skill-rmi-removal.md`)
-   - mapeia chamadas RMI e substitui por integração moderna.
+   - remove RMI por completo quando não houver uso ativo fora desse contexto; adapta/substitui apenas uso cruzado necessário.
 5. **SOAP Removal** (`skills/skill-soap-removal.md`)
-   - remove integrações SOAP legadas com plano controlado de transição (ex.: REST).
+   - remove SOAP por completo quando não houver uso ativo fora desse contexto; adapta/substitui apenas uso cruzado necessário.
 6. **ANT Migration** (`skills/skill-ant-migration.md`)
    - evolui ANT ou migra para Maven/Gradle com CI reproduzível.
 7. **Encerramento**
    - consolida evidências, riscos residuais e próximos passos.
 
 > Projetos legados com mais de 20 anos exigem **análise aprofundada e cuidadosa** antes de qualquer remoção estrutural. Toda decisão deve ser rastreável em `.migration/outputs/`.
+
+### Diretriz de remoção legada (RMI/JNLP/SOAP)
+- É permitido remover completamente a tecnologia legada **sem substituição** quando o sistema não fará mais uso dela.
+- Nenhum artefato da tecnologia removida deve permanecer, salvo uso ativo comprovado em outros contextos (ex.: DTO também usado em REST/outro módulo).
+- Em caso de uso cruzado por código ativo, revisar se remove, substitui, adapta ou escala ao PO para decisão.
+- É proibido afetar o funcionamento de partes não relacionadas à tecnologia removida.
+- O PO deve ser acionado sempre que houver dúvida de impacto; sem dúvida e sem dependências externas ao contexto legado, remoção pura é aceitável.
 
 ## Squad especializada para remoção SOAP (Web Services)
 
@@ -70,7 +77,7 @@ Para cenários com integrações SOAP legadas e alto acoplamento, use:
 2. Mapear contratos WSDL/XSD e operações críticas.
 3. Levantar dependências legadas (`axis`, `axis2`, `jax-ws`, `javax.xml.ws`, `jakarta.xml.ws`).
 4. Mapear pontos de integração (clientes gerados, stubs, handlers, gateways e jobs).
-5. Definir plano de substituição/migração (ex.: REST) com coexistência controlada.
+5. Definir por contexto se cabe remoção pura ou substituição/adaptação apenas nos pontos de uso cruzado.
 6. Executar checklist de revisão técnica, funcional e operacional.
 7. Registrar evidências em outputs locais (`soap-inventory.md`, `migration-plan.md`, `validation-checklist.md`).
 
@@ -120,7 +127,7 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 
 #### Exemplos de uso no terminal (Copilot CLI)
 - `gh copilot suggest "listar arquivos .jnlp e imports javax.jnlp neste projeto"`
-- `gh copilot suggest "mapear ocorrências java.rmi e sugerir estratégia de substituição por REST"`
+- `gh copilot suggest "mapear ocorrências java.rmi e indicar o que pode ser removido sem substituição e o que exige adaptação por uso cruzado"`
 - `gh copilot explain "ant -p"`
 
 ![Fluxo ilustrativo VS Code + Copilot](docs/images/copilot-vscode-flow.svg)
@@ -173,7 +180,7 @@ Como este trabalho é focado em modernização de sistemas legados Java, o uso d
 - "Use `skills/skill-discovery.md` e gere checklist inicial para este projeto legado."
 - "Aplique `skills/skill-jnlp-removal.md` e liste arquivos/referências removíveis com baixo risco."
 - "Com base no discovery, execute `skills/skill-rmi-removal.md` e proponha plano incremental."
-- "Com base no discovery, execute `skills/skill-soap-removal.md` e proponha migração SOAP → REST com etapas reversíveis."
+- "Com base no discovery, execute `skills/skill-soap-removal.md` e indique remoção pura quando possível, com adaptação apenas para uso cruzado."
 - "Use `skills/skill-ant-migration.md` e proponha estratégia de build reproduzível no CI."
 
 ![Fluxo ilustrativo Eclipse + Copilot](docs/images/copilot-eclipse-flow.svg)

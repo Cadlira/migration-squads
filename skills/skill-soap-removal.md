@@ -3,6 +3,12 @@
 ## Objetivo
 Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade, preservando operação em sistemas Java complexos e acoplados (20+ anos).
 
+## Diretrizes obrigatórias
+- É permitido remover SOAP sem substituição quando o sistema não fizer mais uso dessa tecnologia.
+- Não manter artefatos SOAP (stubs, proxies, utilitários e classes de suporte) sem uso ativo comprovado fora do contexto SOAP.
+- Em uso cruzado por código ativo, decidir entre remover, substituir, adaptar ou escalar ao PO quando houver dúvida.
+- É proibido afetar o funcionamento de partes não relacionadas ao SOAP.
+
 ## Quando usar
 - Há uso de SOAP como cliente e/ou provedor no legado.
 - O discovery identificou WSDLs, stubs gerados, handlers ou bibliotecas SOAP (Axis/JAX-WS).
@@ -25,13 +31,13 @@ Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade
 4. **Mapeamento de pontos de integração**
    - Encontrar stubs, proxies, gateways, serviços de borda, jobs e pontos batch.
    - Registrar impacto cruzado com satélites acoplados.
-5. **Plano de substituição/migração**
-   - Definir estratégia alvo (ex.: REST) e contrato equivalente.
-   - Planejar coexistência (feature flag/adapter), fallback e rollback.
-   - Definir testes de compatibilidade e validação de payload/erros.
+5. **Decisão de retirada por contexto**
+   - Definir se o caso é remoção pura (sem substituição) ou migração/substituição parcial.
+   - Para uso cruzado, definir adaptação/substituição por artefato compartilhado.
+   - Em dúvidas de impacto, escalar ao PO com opções e efeitos esperados.
 6. **Execução controlada**
    - Migrar por operação/módulo com entregas pequenas.
-   - Remover chamadas SOAP e dependências apenas após validação.
+   - Remover chamadas SOAP e dependências sem impactar partes não relacionadas.
 7. **Fechamento técnico**
    - Consolidar evidências, pendências e riscos residuais.
 
@@ -40,15 +46,17 @@ Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade
 - [ ] Todos os contratos WSDL/XSD críticos foram mapeados.
 - [ ] Dependências Axis/JAX-WS e geração de stubs foram identificadas.
 - [ ] Pontos de integração (sync/async, batch, satélites) foram analisados.
-- [ ] Plano SOAP → REST (ou alvo definido) possui rollback.
+- [ ] Decisão de remoção pura ou substituição parcial foi registrada por contexto.
 - [ ] Testes funcionais e de contrato foram executados e documentados.
 - [ ] Não restaram referências SOAP ativas no escopo migrado.
+- [ ] Não houve regressão em código ativo não relacionado ao SOAP.
 
 ## Sugestões de prompts para análise de código
 - "Liste endpoints SOAP deste módulo e onde são consumidos/publicados."
 - "Mapeie classes geradas por WSDL e bibliotecas Axis/JAX-WS em uso."
 - "Mostre pontos de acoplamento SOAP com impacto em módulos satélites."
-- "Proponha plano incremental SOAP → REST com fallback e critérios de aceite."
+- "Avalie se este módulo pode remover SOAP sem substituição e liste impactos."
+- "Se houver uso cruzado de DTO/utilitário, proponha remover, substituir ou adaptar com critérios de aceite."
 - "Gere checklist de validação para remover dependências SOAP com segurança."
 
 ## Saídas esperadas (disco local)

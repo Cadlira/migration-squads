@@ -8,4 +8,5 @@ Garantir consistência técnica, qualidade e governança das migrações, com an
 - Aprovar ordem de execução das skills.
 - Definir estratégia incremental e critérios de aceite.
 - Resolver conflitos entre agentes.
-- Validar riscos de substituição de integrações legadas críticas (incluindo SOAP).
+- Validar quando remoção pura (sem substituição) é segura e quando adaptação/substituição é obrigatória.
+- Garantir que remoções não causem regressão em partes não relacionadas da aplicação.
