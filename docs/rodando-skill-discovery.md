@@ -12,7 +12,7 @@ Use este procedimento quando:
 ## Pré-requisitos
 
 1. Repositório `migration-squads` clonado e aberto no Copilot Chat.
-2. Projeto legado externo disponível em caminho absoluto (ex.: `/home/user/dev/Atendimento` ou `C:\Users\user\dev\Atendimento`).
+2. Projeto legado externo disponível em caminho absoluto (ex.: Linux/macOS `/home/user/dev/Atendimento` ou Windows `C:\Users\user\dev\Atendimento`).
 3. Permissão local para criar/atualizar a pasta `.migration/` no projeto legado.
 
 ## Entradas, contexto e saídas esperadas
@@ -57,13 +57,14 @@ Preencha os itens solicitados (módulos, Java/servidor de aplicação, banco, ta
 ### 4) Valide os outputs no projeto legado
 No projeto `Atendimento`, confira:
 - `<caminho-absoluto-do-projeto>/.migration/outputs/discovery-report.md`
-- `<caminho-absoluto-do-projeto>/.migration/outputs/migration-plan.md` (quando a análise já sugerir próximos passos)
-- `<caminho-absoluto-do-projeto>/.migration/outputs/validation-checklist.md` (quando houver checklist inicial de validação)
+- `<caminho-absoluto-do-projeto>/.migration/outputs/migration-plan.md` (output opcional; normalmente surge quando o discovery já propõe plano de próximas fases)
+- `<caminho-absoluto-do-projeto>/.migration/outputs/validation-checklist.md` (output opcional; pode ser gerado no discovery ou nas fases seguintes)
 
 ### 5) Integre os outputs com o fluxo local
 No projeto consumidor:
 1. Mantenha/adapte `.migration/settings.local.json` (não versionar segredo);
    - Garanta no `.gitignore` do projeto consumidor a regra `.migration/settings.local.json`.
+   - Configure o acesso ao banco com `database.passwordEnv` (ex.: `PGPASSWORD`) em vez de senha em texto plano.
 2. Mantenha `.migration/outputs/` como trilha de evidências;
 3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, ant-migration).
 
