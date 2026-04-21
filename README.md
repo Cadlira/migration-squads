@@ -62,7 +62,7 @@ Para novos devs/squads, siga esta ordem:
 ### Diretriz de remoção legada (RMI/JNLP/SOAP)
 - É permitido remover completamente a tecnologia legada **sem substituição** quando o sistema não fará mais uso dela.
 - Nenhum artefato da tecnologia removida deve permanecer, salvo uso ativo comprovado em outros contextos (ex.: DTO também usado em REST/outro módulo).
-- Em caso de uso cruzado por código ativo, revisar se remove, substitui, adapta ou escala ao PO para decisão.
+- Em caso de uso cruzado por código ativo (ex.: DTO compartilhado entre SOAP e REST), revisar se remove, substitui, adapta ou escala ao PO para decisão.
 - É proibido afetar o funcionamento de partes não relacionadas à tecnologia removida.
 - O PO deve ser acionado sempre que houver dúvida de impacto; sem dúvida e sem dependências externas ao contexto legado, remoção pura é aceitável.
 

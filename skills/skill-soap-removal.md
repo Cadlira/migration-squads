@@ -56,7 +56,7 @@ Remover integrações SOAP/Web Services legadas com segurança e rastreabilidade
 - "Mapeie classes geradas por WSDL e bibliotecas Axis/JAX-WS em uso."
 - "Mostre pontos de acoplamento SOAP com impacto em módulos satélites."
 - "Avalie se este módulo pode remover SOAP sem substituição e liste impactos."
-- "Se houver uso cruzado de DTO/utilitário, proponha remover, substituir ou adaptar com critérios de aceite."
+- "Se houver uso cruzado de DTOs/utilitários, proponha remover, substituir ou adaptar com critérios de aceite."
 - "Gere checklist de validação para remover dependências SOAP com segurança."
 
 ## Saídas esperadas (disco local)
