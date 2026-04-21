@@ -33,6 +33,10 @@ Cada agente deve:
 - preservar/adaptar artefatos compartilhados com uso ativo (ex.: DTO/utilitário) para não quebrar fluxos mantidos;
 - escalar ao `agents/product-owner.md` com opções e impactos somente quando houver incerteza de uso ativo/cross-flow.
 
+## Definição-chave: uso ativo
+
+Neste contexto, "uso ativo" significa referência ainda utilizada por funcionalidade mantida (ex.: chamada em runtime, API/tela em produção, job ativo ou dependência de módulo satélite em operação).
+
 ## Como usar a infraestrutura (modelo híbrido recomendado)
 
 ### 1) Infra central (este repositório)
@@ -75,8 +79,6 @@ Para novos devs/squads, siga esta ordem:
 > Projetos legados com mais de 20 anos exigem **análise aprofundada e cuidadosa** antes de qualquer remoção estrutural. Toda decisão deve ser rastreável em `.migration/outputs/`.
 
 ### Gate de decisão para remoções (obrigatório)
-
-Neste contexto, "uso ativo" significa referência ainda utilizada por funcionalidade mantida (ex.: chamada em runtime, API/tela em produção, job ativo ou dependência de módulo satélite em operação).
 
 Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: serviço RMI removido, mas um endpoint REST mantido ainda instancia o mesmo DTO/utilitário), a squad deve:
 

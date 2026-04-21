@@ -1,7 +1,8 @@
 # Skill: rmi-removal
 
 ## Objetivo
-Remover completamente integrações RMI legadas sem impactar funcionalidades mantidas, com substituição somente quando houver dependências vivas fora do contexto removido.
+Remover completamente integrações RMI legadas sem impactar funcionalidades mantidas.
+Aplicar substituição somente quando houver dependências vivas fora do contexto removido.
 
 ## Etapas
 1. Mapear contratos e pontos de invocação RMI.
