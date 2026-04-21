@@ -36,6 +36,7 @@ Cada agente deve:
 ## Definição-chave: uso ativo
 
 Neste contexto, "uso ativo" significa referência ainda utilizada por funcionalidade mantida (ex.: chamada em runtime, API/tela em produção, job ativo ou dependência de módulo satélite em operação).
+Não é considerado uso ativo: código comentado, endpoint descontinuado sem chamadas reais, referência histórica em documentação ou artefato legado sem execução no fluxo atual.
 
 ## Como usar a infraestrutura (modelo híbrido recomendado)
 
@@ -80,7 +81,7 @@ Para novos devs/squads, siga esta ordem:
 
 ### Gate de decisão para remoções (obrigatório)
 
-Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: serviço RMI removido, mas um endpoint REST mantido ainda instancia o mesmo DTO/utilitário), a squad deve:
+Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo antes da remoção (ex.: um endpoint REST mantido ainda instancia o mesmo DTO/utilitário originalmente associado ao serviço RMI), a squad deve:
 
 1. pausar a remoção;
 2. escalar ao Product Owner;
