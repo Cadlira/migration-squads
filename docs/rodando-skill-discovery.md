@@ -57,13 +57,14 @@ Preencha os itens solicitados (módulos, Java/app server, banco, tabelas de menu
 ### 4) Valide os outputs no projeto legado
 No projeto `Atendimento`, confira:
 - `/home/user/dev/Atendimento/.migration/outputs/discovery-report.md`
-- demais arquivos de evidência eventualmente gerados para o discovery
+- `/home/user/dev/Atendimento/.migration/outputs/migration-plan.md` (quando a análise já sugerir próximos passos)
+- `/home/user/dev/Atendimento/.migration/outputs/validation-checklist.md` (quando houver checklist inicial de validação)
 
 ### 5) Integre os outputs com o fluxo local
 No projeto consumidor:
-1. mantenha/adapte `.migration/settings.local.json` (não versionar segredo);
-2. mantenha `.migration/outputs/` como trilha de evidências;
-3. use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, ant-migration).
+1. Mantenha/adapte `.migration/settings.local.json` (não versionar segredo);
+2. Mantenha `.migration/outputs/` como trilha de evidências;
+3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, ant-migration).
 
 ## Exemplos de comandos/prompts
 
