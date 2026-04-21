@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#111827"/>
+  <rect x="40" y="40" width="880" height="460" rx="14" fill="#1f2937" stroke="#374151"/>
+  <text x="70" y="88" fill="#22d3ee" font-size="28" font-family="Arial, sans-serif">IntelliJ + GitHub Copilot (Fluxo ilustrativo)</text>
+  <rect x="70" y="120" width="380" height="320" rx="10" fill="#111827" stroke="#374151"/>
+  <text x="90" y="165" fill="#f9fafb" font-size="20" font-family="Arial, sans-serif">Inline</text>
+  <text x="90" y="200" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">- Ajustes locais no código legado</text>
+  <text x="90" y="230" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">- Aceite parcial das sugestões</text>
+  <text x="90" y="260" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">- Refino por módulo satélite</text>
+  <rect x="490" y="120" width="400" height="320" rx="10" fill="#111827" stroke="#374151"/>
+  <text x="510" y="165" fill="#f9fafb" font-size="20" font-family="Arial, sans-serif">Chat</text>
+  <text x="510" y="200" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">Prompt com skill explícita:</text>
+  <text x="510" y="230" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">skills/skill-rmi-removal.md</text>
+  <text x="510" y="260" fill="#9ca3af" font-size="16" font-family="Arial, sans-serif">Saída rastreável em .migration/outputs/</text>
+  <line x1="450" y1="280" x2="490" y2="280" stroke="#22d3ee" stroke-width="4"/>
+  <text x="70" y="475" fill="#9ca3af" font-size="14" font-family="Arial, sans-serif">Imagem ilustrativa para onboarding de uso com Copilot.</text>
+</svg>

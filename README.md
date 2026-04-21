@@ -54,9 +54,19 @@ Para novos devs/squads, siga esta ordem:
 6. **Encerramento**
    - consolida evidências, riscos residuais e próximos passos.
 
-## Como rodar com Copilot (VS Code e IntelliJ)
+## Como rodar com Copilot (VS Code, IntelliJ e Eclipse)
 
 > Objetivo: usar Copilot Chat para orquestrar as etapas e Copilot CLI para acelerar comandos e revisões no terminal.
+
+### Links oficiais recomendados
+- Instalação por IDE (GitHub Docs):  
+  https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment
+- Configuração no IDE (GitHub Docs):  
+  https://docs.github.com/en/copilot/how-tos/configure-personal-settings/configure-in-ide
+- Sugestões inline por IDE (GitHub Docs):  
+  https://docs.github.com/en/copilot/concepts/completions/code-suggestions
+- Matriz de features por IDE/versão (GitHub Docs):  
+  https://docs.github.com/en/copilot/reference/copilot-feature-matrix
 
 ### VS Code (Copilot Chat + Copilot CLI)
 
@@ -69,6 +79,11 @@ Para novos devs/squads, siga esta ordem:
 
 > Dica: para melhor resultado no Chat, cite a skill por caminho (ex.: `skills/skill-discovery.md`) para ancorar o contexto.
 
+#### Uso inline com as skills/orquestrador
+- No arquivo Java, escreva comentário de intenção (ex.: `// mapear pontos RMI e sugerir adapter REST`) e aguarde sugestão ghost text.
+- Aceite parcialmente as sugestões e refine com contexto de módulo/satélite (`atendimento`, `empresa`, `infra`, etc.).
+- Quando necessário, complemente no Chat com referência explícita da skill (`skills/skill-rmi-removal.md`).
+
 #### Exemplos de prompts no Copilot Chat (VS Code)
 - "Execute a skill `discovery` considerando este projeto e gere saída em `.migration/outputs/discovery-report.md`."
 - "Com base no discovery, rode `menu-scripts` e gere SQL de auditoria, desativação e remoção."
@@ -79,6 +94,8 @@ Para novos devs/squads, siga esta ordem:
 - `gh copilot suggest "mapear ocorrências java.rmi e sugerir estratégia de substituição por REST"`
 - `gh copilot explain "ant -p"`
 
+![Fluxo ilustrativo VS Code + Copilot](docs/images/copilot-vscode-flow.svg)
+
 ### IntelliJ IDEA (Copilot Chat)
 
 #### Setup básico
@@ -86,11 +103,70 @@ Para novos devs/squads, siga esta ordem:
 2. Faça login com sua conta GitHub.
 3. Abra o projeto legado na janela principal e mantenha este repositório aberto em **segunda janela** (ou como projeto adicional) para consulta de skills.
 
+#### Uso inline com as skills/orquestrador
+- Use sugestões inline para tarefas locais (ex.: limpeza de referências `javax.jnlp`, atualização de build script, ajustes de integração).
+- Para fluxo de migração completo, abra Copilot Chat e instrua a sequência de skills.
+- Sempre peça saída rastreável em `.migration/outputs/` quando estiver atuando no projeto consumidor.
+
 #### Exemplos de prompts no Copilot Chat (IntelliJ)
 - Dica: para melhor resultado no Chat, cite a skill por caminho (ex.: `skills/skill-discovery.md`) para ancorar o contexto.
 - "Use o fluxo da squad: discovery → menu-scripts → jnlp-removal → rmi-removal → ant-migration. Comece pelo discovery."
 - "Analise este módulo e gere checklist de remoção de RMI com critérios de aceite."
 - "Sugira plano de migração de ANT para Maven sem quebrar artefatos atuais."
+
+![Fluxo ilustrativo IntelliJ + Copilot](docs/images/copilot-intellij-flow.svg)
+
+### Eclipse (Copilot Chat + sugestões inline) — **100% suportado para este contexto legado**
+
+Como este trabalho é focado em modernização de sistemas legados Java, o uso de **Eclipse é oficialmente suportado neste repositório** para orquestrar as skills de migração.
+
+#### Setup básico (detalhado)
+1. Garanta pré-requisitos:
+   - acesso ao GitHub Copilot (Free/Pro/Business/Enterprise);
+   - Eclipse **2024-03 ou superior**.
+2. Instale o GitHub Copilot no Eclipse por uma das opções oficiais:
+   - Eclipse Marketplace: https://aka.ms/copiloteclipse
+   - Eclipse Update Site: https://azuredownloads-g3ahgwb5b8bkbxhd.b01.azurefd.net/github-copilot/
+3. Reinicie o Eclipse após a instalação.
+4. No canto inferior direito da IDE, clique no ícone do Copilot e selecione **Sign In to GitHub**.
+5. Clique em **Copy Code and Open**, cole o código no navegador, autorize e finalize em **OK** no Eclipse.
+
+#### Uso inline no Eclipse com skills de migração
+- Em classes Java ou build scripts, descreva a intenção em comentário curto e aguarde sugestão inline.
+- Exemplos de intenção:
+  - `// discovery: identificar dependências RMI deste módulo`
+  - `// jnlp-removal: remover referência legada mantendo compatibilidade`
+  - `// ant-migration: sugerir target equivalente em Maven`
+- Use aceite parcial para manter mudanças cirúrgicas em código legado.
+
+#### Uso via Copilot Chat no Eclipse (prompts para orquestração)
+- "Use `skills/skill-discovery.md` e gere checklist inicial para este projeto legado."
+- "Aplique `skills/skill-jnlp-removal.md` e liste arquivos/referências removíveis com baixo risco."
+- "Com base no discovery, execute `skills/skill-rmi-removal.md` e proponha plano incremental."
+- "Use `skills/skill-ant-migration.md` e proponha estratégia de build reproduzível no CI."
+
+![Fluxo ilustrativo Eclipse + Copilot](docs/images/copilot-eclipse-flow.svg)
+
+#### Referências oficiais úteis para Eclipse
+- Instalação no ambiente (GitHub Docs):  
+  https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment
+- Configuração no IDE (GitHub Docs):  
+  https://docs.github.com/en/copilot/how-tos/configure-personal-settings/configure-in-ide
+- Sugestões inline no Eclipse (GitHub Docs):  
+  https://docs.github.com/en/copilot/concepts/completions/code-suggestions
+- Matriz de features (inclui Eclipse):  
+  https://docs.github.com/en/copilot/reference/copilot-feature-matrix
+
+### Imagens e screenshots do guia
+
+- As imagens deste README ficam em `docs/images/`.
+- Convenção sugerida para novos arquivos:
+  - `copilot-<ide>-flow.svg` para diagramas/visão geral;
+  - `copilot-<ide>-<tema>-YYYYMMDD.png` para screenshots reais.
+- Para expandir o guia:
+  1. Capture o screenshot da IDE (setup, login, chat, inline suggestion).
+  2. Salve em `docs/images/` com nome descritivo.
+  3. Atualize este README referenciando a nova imagem e o contexto de uso.
 
 ## Como estender para novas migrações
 
