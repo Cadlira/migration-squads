@@ -18,6 +18,21 @@ A proposta é funcionar como um **orquestrador mestre de skills e agentes**, reu
 - **Template para novas skills**: `skills/TEMPLATE-new-skill.md`
 - **Modelo de integração local**: `.migration/`
 
+## Agentes especialistas por tecnologia legada
+
+Este repositório não usa mais um agente genérico de desenvolvimento backend para remoções legadas. A squad técnica é especializada por tecnologia:
+
+- `agents/dev-jnlp.md`
+- `agents/dev-rmi.md`
+- `agents/dev-soap.md`
+
+Cada agente deve:
+- executar análise aprofundada e rastreável;
+- evitar remoção apressada/destrutiva;
+- permitir remoção total sem substituição quando não houver dependências vivas fora do contexto removido;
+- preservar/adaptar artefatos compartilhados com uso ativo (ex.: DTO/utilitário) para não quebrar fluxos mantidos;
+- escalar ao `agents/product-owner.md` com opções e impactos somente quando houver incerteza de uso ativo/cross-flow.
+
 ## Como usar a infraestrutura (modelo híbrido recomendado)
 
 ### 1) Infra central (este repositório)
@@ -47,11 +62,11 @@ Para novos devs/squads, siga esta ordem:
 2. **Menu Scripts** (`skills/skill-menu-scripts.md`)
    - gera SQL de auditoria e ação (SELECT → UPDATE → DELETE) para menus JNLP.
 3. **JNLP Removal** (`skills/skill-jnlp-removal.md`)
-   - remove arquivos/referências JNLP e assinatura legada no build.
+   - remove totalmente arquivos/referências JNLP e assinatura legada no build; substitui apenas se houver dependência viva fora do contexto removido.
 4. **RMI Removal** (`skills/skill-rmi-removal.md`)
-   - mapeia chamadas RMI e substitui por integração moderna.
+   - mapeia chamadas RMI e remove com segurança; aplica substituição somente quando houver dependência viva fora do contexto removido.
 5. **SOAP Removal** (`skills/skill-soap-removal.md`)
-   - remove integrações SOAP legadas com plano controlado de transição (ex.: REST).
+   - remove integrações SOAP legadas sem impacto em funcionalidades mantidas; usa transição (ex.: REST) apenas quando necessário.
 6. **ANT Migration** (`skills/skill-ant-migration.md`)
    - evolui ANT ou migra para Maven/Gradle com CI reproduzível.
 7. **Encerramento**
@@ -59,20 +74,36 @@ Para novos devs/squads, siga esta ordem:
 
 > Projetos legados com mais de 20 anos exigem **análise aprofundada e cuidadosa** antes de qualquer remoção estrutural. Toda decisão deve ser rastreável em `.migration/outputs/`.
 
-## Squad especializada para remoção SOAP (Web Services)
+### Gate de decisão para remoções (obrigatório)
 
-Para cenários com integrações SOAP legadas e alto acoplamento, use:
-- **Agent especializado:** `agents/dev-soap.md`
-- **Skill dedicada:** `skills/skill-soap-removal.md`
+Neste contexto, "uso ativo" significa referência ainda utilizada por funcionalidade mantida (ex.: chamada em runtime, API/tela em produção, job ativo ou dependência de módulo satélite em operação).
 
-### Fluxo detalhado da squad SOAP (resumo)
+Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: serviço RMI removido, mas um endpoint REST mantido ainda instancia o mesmo DTO/utilitário), a squad deve:
+
+1. pausar a remoção;
+2. escalar ao Product Owner;
+3. apresentar opções com impactos técnicos e de negócio para decisão do stakeholder de negócio responsável.
+
+Se não houver dúvida e não existir dependência viva fora do contexto removido, a squad tem autonomia para remoção completa sem substituição.
+
+## Squad especializada para remoções de legado (JNLP, RMI e SOAP)
+
+Para cenários com alto acoplamento e legado crítico, use:
+- **Dev JNLP:** `agents/dev-jnlp.md` + `skills/skill-jnlp-removal.md`
+- **Dev RMI:** `agents/dev-rmi.md` + `skills/skill-rmi-removal.md`
+- **Dev SOAP:** `agents/dev-soap.md` + `skills/skill-soap-removal.md`
+- **Coordenação técnica:** `agents/tech-lead.md` e `agents/architect.md`
+- **Decisão de incerteza/impacto:** `agents/product-owner.md`
+
+### Fluxo detalhado (resumo)
 1. Identificar endpoints SOAP e provedores/consumidores por módulo.
 2. Mapear contratos WSDL/XSD e operações críticas.
 3. Levantar dependências legadas (`axis`, `axis2`, `jax-ws`, `javax.xml.ws`, `jakarta.xml.ws`).
 4. Mapear pontos de integração (clientes gerados, stubs, handlers, gateways e jobs).
 5. Definir plano de substituição/migração (ex.: REST) com coexistência controlada.
 6. Executar checklist de revisão técnica, funcional e operacional.
-7. Registrar evidências em outputs locais (`soap-inventory.md`, `migration-plan.md`, `validation-checklist.md`).
+7. Em incerteza de uso ativo, a squad escala ao Product Owner, que apresenta opções ao usuário com impacto para decisão.
+8. Registrar evidências em outputs locais (`soap-inventory.md`, `migration-plan.md`, `validation-checklist.md`).
 
 ## Guia rápido para projeto satélite/externo (ex.: Atendimento)
 
@@ -117,6 +148,7 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 - "Com base no discovery, rode `menu-scripts` e gere SQL de auditoria, desativação e remoção."
 - "Aplique `jnlp-removal` e liste evidências de que não restou referência ativa fora de documentação."
 - "Aplique `soap-removal` e gere inventário de endpoints/WSDL/dependências com plano incremental SOAP → REST."
+- "Se houver incerteza de uso ativo na remoção (ex.: análise estática indica uso potencial, mas comportamento em runtime não está confirmado), escale ao Product Owner com opções e impactos antes de alterar."
 
 #### Exemplos de uso no terminal (Copilot CLI)
 - `gh copilot suggest "listar arquivos .jnlp e imports javax.jnlp neste projeto"`
@@ -142,6 +174,7 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 - "Use o fluxo da squad: discovery → menu-scripts → jnlp-removal → rmi-removal → soap-removal → ant-migration. Comece pelo discovery."
 - "Analise este módulo e gere checklist de remoção de RMI com critérios de aceite."
 - "Aplique `skills/skill-soap-removal.md` e gere inventário de endpoints/WSDL/dependências Axis/JAX-WS com plano de migração para REST."
+- "Se houver dependência oculta em remoção de JNLP/RMI/SOAP, pare e apresente opções com impacto para decisão do PO."
 - "Sugira plano de migração de ANT para Maven sem quebrar artefatos atuais."
 
 ![Fluxo ilustrativo IntelliJ + Copilot](docs/images/copilot-intellij-flow.svg)
@@ -174,6 +207,7 @@ Como este trabalho é focado em modernização de sistemas legados Java, o uso d
 - "Aplique `skills/skill-jnlp-removal.md` e liste arquivos/referências removíveis com baixo risco."
 - "Com base no discovery, execute `skills/skill-rmi-removal.md` e proponha plano incremental."
 - "Com base no discovery, execute `skills/skill-soap-removal.md` e proponha migração SOAP → REST com etapas reversíveis."
+- "Sempre que houver dúvida de uso ativo, escale ao Product Owner (PO) com alternativas e impactos antes de remover."
 - "Use `skills/skill-ant-migration.md` e proponha estratégia de build reproduzível no CI."
 
 ![Fluxo ilustrativo Eclipse + Copilot](docs/images/copilot-eclipse-flow.svg)

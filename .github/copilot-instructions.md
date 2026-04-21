@@ -17,13 +17,14 @@ Padronizar e reutilizar jornadas de migração (RMI, JNLP, SOAP/Web Services, bu
 4. Em conflitos técnicos, escalar para `agents/tech-lead.md`.
 5. Toda skill deve publicar: entrada, ação, saída e critérios de aceite.
 6. Em projetos legados com mais de 20 anos, exigir análise aprofundada, cuidadosa e rastreável antes de qualquer remoção de integração.
+7. É permitido remover tecnologia legada sem substituição quando não houver dependências vivas; artefatos compartilhados com uso ativo (ex.: DTO/utilitários) não devem ser removidos sem adaptação; em incerteza de uso cruzado, escalar para `agents/product-owner.md` com opções e impactos.
 
 ## Fluxo de Orquestração
 1. **Discovery**: inventariar código, banco, build e riscos.
 2. **Menu Scripts**: auditar/desativar/remover menus JNLP no banco.
 3. **JNLP Removal**: retirar arquivos/referências e assinatura legado.
-4. **RMI Removal**: mapear chamadas e substituir por integração moderna.
-5. **SOAP Removal**: mapear endpoints, contratos WSDL e dependências para substituição segura.
+4. **RMI Removal**: mapear chamadas e remover/substituir com segurança conforme dependências vivas.
+5. **SOAP Removal**: mapear endpoints, contratos WSDL e dependências para remoção segura sem impacto em fluxos mantidos.
 6. **ANT Migration**: atualizar ou substituir build, com pipeline CI.
 7. **Encerramento**: consolidar evidências e próximos passos.
 
@@ -31,7 +32,8 @@ Padronizar e reutilizar jornadas de migração (RMI, JNLP, SOAP/Web Services, bu
 - `agents/tech-lead.md`
 - `agents/architect.md`
 - `agents/product-owner.md`
-- `agents/dev-backend.md`
+- `agents/dev-rmi.md`
+- `agents/dev-jnlp.md`
 - `agents/dev-soap.md`
 - `agents/dev-build.md`
 - `agents/dev-database.md`
