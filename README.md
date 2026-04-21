@@ -1,6 +1,7 @@
 # Estratégia de Estrutura para Migration Squads
 
-Este documento responde ao dilema de arquitetura para um ecossistema legado Java (projeto principal `atendimento` + satélites `empresa`, `common`, `controleacesso`, `controleacessoweb`, `utilweb`, `infra`) com foco inicial em remover RMI/JNLP, modernizar build e manter evolução contínua de skills para futuras migrações.
+Este documento responde ao dilema de arquitetura para um ecossistema legado Java, com foco inicial em remover RMI/JNLP, modernizar build e manter evolução contínua de skills para futuras migrações.
+No contexto analisado, o projeto principal é `atendimento` e os satélites incluem `empresa`, `common`, `controleacesso`, `controleacessoweb`, `utilweb` e `infra`.
 
 ## 1) Projeto separado (`migration-squads`) — vantagens e desvantagens
 
@@ -43,7 +44,12 @@ Motivo:
 ## 4) Modelo híbrido recomendado (central + local)
 
 ### Camada central (`migration-squads`)
-- Catálogo de skills base (RMI/JNLP/build/dependências/framework/transação).
+- Catálogo de skills base:
+  - remoção de RMI e JNLP
+  - modernização de build
+  - atualização de dependências
+  - migração de framework
+  - migração de transações
 - Questionários de discovery e templates de plano de migração.
 - Padrões de governança (papéis, critérios de aceite, gates de qualidade).
 - Versionamento semântico das skills e changelog.
