@@ -1,0 +1,31 @@
+# Integração Local (`.migration/`)
+
+Este diretório é o ponto de integração local dos projetos consumidores da infraestrutura central.
+
+## Estrutura sugerida
+- `.migration/settings.local.example.json` → parâmetros locais (sem segredo real no repositório).
+- `.migration/bridges/` → ponte/adaptador de skills para contexto do projeto.
+- `.migration/outputs/` → relatórios, scripts e evidências geradas.
+
+## Exemplo de fluxo local
+1. Copiar `settings.local.example.json` para `settings.local.json` (local, não versionar segredos).
+   - ⚠️ **Obrigatório no projeto consumidor:** adicionar no `.gitignore` a regra para esse arquivo (aceite `.migration/settings.local.json` ou `/.migration/settings.local.json`, conforme padrão do repositório local):
+     `.migration/settings.local.json`
+   - Falhar nesse passo pode expor credenciais e configurações sensíveis.
+   - Observação: este repositório central já ignora esse arquivo, mas projetos consumidores em repositórios separados precisam repetir essa regra localmente.
+2. Preencher path do projeto, módulos satélites e metadados de banco.
+3. Rodar `discovery` usando a configuração local.
+4. Executar skills na sequência recomendada pelo discovery.
+
+## Adaptação de settings
+Use aliases por skill para mapear particularidades locais:
+- nomes de tabelas/colunas;
+- padrões de diretórios de build;
+- módulos que exigem exceção de migração.
+
+## Adaptação de outputs
+Padronize outputs para facilitar governança:
+- `outputs/discovery-report.md`
+- `outputs/sql/*.sql`
+- `outputs/migration-plan.md`
+- `outputs/validation-checklist.md`
