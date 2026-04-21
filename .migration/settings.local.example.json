@@ -6,6 +6,7 @@
     "port": 5432,
     "database": "app",
     "user": "app_user",
+    "passwordEnv": "PGPASSWORD",
     "menuTable": "menu",
     "menuUrlColumn": "url",
     "menuStatusColumn": "status"
