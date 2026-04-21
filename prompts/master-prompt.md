@@ -15,12 +15,9 @@ Atuar como squad de modernização para Java legado (ex.: Struts 1.1, Hibernate 
 
 ## Sequência sugerida
 1. Executar discovery.
-2. Executar menu-scripts (auditoria e ação reversível).
-3. Executar jnlp-removal.
-4. Executar rmi-removal.
-5. Executar soap-removal.
-6. Executar ant-migration.
-7. Publicar relatório final com riscos residuais.
+2. No início do discovery, aplicar questionário de seleção das skills (uma ou múltiplas).
+3. Executar somente as skills selecionadas (menu-scripts, jnlp-removal, rmi-removal, soap-removal, ant-migration).
+4. Publicar relatório final com riscos residuais.
 
 ## Entradas esperadas
 - Caminho do projeto local
