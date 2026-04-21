@@ -14,6 +14,7 @@ Coletar contexto técnico local para orientar as demais skills sem retrabalho.
 ## Ações
 - Inventariar arquivos `.jnlp`, uso de `javax.jnlp`, uso de `java.rmi`.
 - Inventariar targets ANT ligados a empacotamento/assinatura.
+- Verificar se `.migration/settings.local.json` está no `.gitignore` do projeto consumidor.
 - Registrar em `.migration/outputs/discovery-report.md` no projeto local.
 
 ## Segurança de credenciais

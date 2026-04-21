@@ -35,6 +35,7 @@ WHERE url ILIKE 'jnlp:%'
 
 ## Observação de performance
 Em tabelas grandes, qualquer `ILIKE` com wildcard inicial (como `%.jnlp` e `%/jnlp/%`) pode gerar full scan. Se necessário, use filtro mais específico ou índice funcional apropriado antes da execução em produção.
+Quando possível, adicione filtro seletivo extra (ex.: status ativo ou janela de datas) para reduzir custo de varredura.
 
 ## Saída esperada
 Arquivos SQL em `.migration/outputs/sql/` do projeto local.
