@@ -70,13 +70,13 @@ No projeto consumidor:
 
 ### Copilot Chat (VS Code / IntelliJ / Eclipse)
 ```text
-Preciso rodar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em /home/user/dev/Atendimento.
+Preciso executar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em /home/user/dev/Atendimento.
 Me conduza pelo questionário e gere os outputs em /home/user/dev/Atendimento/.migration/outputs/.
 ```
 
 ### Copilot CLI
 ```sh
-gh copilot suggest "Rode a skill discovery de skills/skill-discovery.md para /home/user/dev/Atendimento e liste entradas necessárias e outputs esperados"
+gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para /home/user/dev/Atendimento e liste entradas necessárias e outputs esperados"
 ```
 
 ### Prompt para múltiplos satélites
