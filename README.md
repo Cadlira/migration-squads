@@ -61,7 +61,7 @@ Para novos devs/squads, siga esta ordem:
 2. **Menu Scripts** (`skills/skill-menu-scripts.md`)
    - gera SQL de auditoria e ação (SELECT → UPDATE → DELETE) para menus JNLP.
 3. **JNLP Removal** (`skills/skill-jnlp-removal.md`)
-   - remover totalmente arquivos/referências JNLP e assinatura legada no build, com substituição validada.
+   - remove totalmente arquivos/referências JNLP e assinatura legada no build, com substituição validada.
 4. **RMI Removal** (`skills/skill-rmi-removal.md`)
    - mapeia chamadas RMI e substitui por integração moderna antes da remoção completa.
 5. **SOAP Removal** (`skills/skill-soap-removal.md`)
