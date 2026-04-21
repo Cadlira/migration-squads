@@ -50,7 +50,7 @@ Considere esse projeto como alvo e gere os artefatos em /home/user/dev/Atendimen
 ```
 
 ### 3) Responda o questionário da discovery
-Preencha os itens solicitados (módulos, Java/app server, banco, tabelas de menu, restrições de deploy).
+Preencha os itens solicitados (módulos, Java/servidor de aplicação, banco, tabelas de menu, restrições de deploy).
 
 > Segurança: não informe senha de banco em texto plano no chat. Use variável de ambiente (`database.passwordEnv`) no `.migration/settings.local.json` (detalhado no passo 5) e mantenha essa configuração fora de versionamento.
 
@@ -63,6 +63,7 @@ No projeto `Atendimento`, confira:
 ### 5) Integre os outputs com o fluxo local
 No projeto consumidor:
 1. Mantenha/adapte `.migration/settings.local.json` (não versionar segredo);
+   - Garanta no `.gitignore` do projeto consumidor a regra `.migration/settings.local.json`.
 2. Mantenha `.migration/outputs/` como trilha de evidências;
 3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, ant-migration).
 
@@ -85,7 +86,7 @@ gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para 
 
 ### Prompt para múltiplos satélites
 ```text
-Execute a discovery para /home/user/dev/Atendimento, considerando satélites /home/user/dev/empresa e /home/user/dev/infra.
+Execute a discovery para /home/user/dev/Atendimento, considerando satélites /home/user/dev/Atendimento-API e /home/user/dev/Atendimento-Batch.
 Consolide riscos e ordem recomendada das skills em .migration/outputs/discovery-report.md no Atendimento.
 ```
 
