@@ -12,12 +12,14 @@ Padronizar e reutilizar jornadas de migração (RMI, JNLP, SOAP/Web Services, bu
 
 ## Protocolo de Agentes
 1. Sempre iniciar com `skills/skill-discovery.md` quando não houver contexto consolidado.
-2. Delegar por responsabilidade única (um agente por etapa principal).
-3. Persistir decisões e achados em `.migration/outputs/` no projeto local.
-4. Em conflitos técnicos, escalar para `agents/tech-lead.md`.
-5. Toda skill deve publicar: entrada, ação, saída e critérios de aceite.
-6. Em projetos legados com mais de 20 anos, exigir análise aprofundada, cuidadosa e rastreável antes de qualquer remoção de integração.
-7. É permitido remover tecnologia legada sem substituição quando não houver dependências vivas; artefatos compartilhados com uso ativo (ex.: DTO/utilitários) não devem ser removidos sem adaptação; em incerteza de uso cruzado, escalar para `agents/product-owner.md` com opções e impactos.
+2. No discovery, abrir questionário inicial para seleção de skills (uma ou várias) antes de qualquer análise detalhada.
+3. Executar análises/pesquisas apenas das skills selecionadas, evitando processamento desnecessário.
+4. Delegar por responsabilidade única (um agente por etapa principal).
+5. Persistir decisões e achados em `.migration/outputs/` no projeto local.
+6. Em conflitos técnicos, escalar para `agents/tech-lead.md`.
+7. Toda skill deve publicar: entrada, ação, saída e critérios de aceite.
+8. Em projetos legados com mais de 20 anos, exigir análise aprofundada, cuidadosa e rastreável antes de qualquer remoção de integração.
+9. É permitido remover tecnologia legada sem substituição quando não houver dependências vivas; artefatos compartilhados com uso ativo (ex.: DTO/utilitários) não devem ser removidos sem adaptação; em incerteza de uso cruzado, escalar para `agents/product-owner.md` com opções e impactos.
 
 ## Fluxo de Orquestração
 1. **Discovery**: inventariar código, banco, build e riscos.

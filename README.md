@@ -62,7 +62,8 @@ Em cada projeto legado/satélite, crie e adapte o diretório `.migration/` com:
 Para novos devs/squads, siga esta ordem:
 
 1. **Discovery** (`skills/skill-discovery.md`)
-   - inventaria RMI, JNLP, SOAP, ANT, contexto de banco e riscos;
+   - inicia com questionário de seleção (uma ou múltiplas skills);
+   - inventaria somente o que for necessário para as skills selecionadas (RMI, JNLP, SOAP, ANT, menu-scripts), além de contexto de banco e riscos;
    - gera base de decisão em `.migration/outputs/`.
 2. **Menu Scripts** (`skills/skill-menu-scripts.md`)
    - gera SQL de auditoria e ação (SELECT → UPDATE → DELETE) para menus JNLP.
@@ -78,6 +79,19 @@ Para novos devs/squads, siga esta ordem:
    - consolida evidências, riscos residuais e próximos passos.
 
 > Projetos legados com mais de 20 anos exigem **análise aprofundada e cuidadosa** antes de qualquer remoção estrutural. Toda decisão deve ser rastreável em `.migration/outputs/`.
+
+### Seleção interativa de skills no discovery
+
+Ao executar `skills/skill-discovery.md`, o primeiro passo é selecionar quais jornadas serão executadas na rodada atual.  
+Somente as skills selecionadas devem disparar análises/pesquisas.
+
+Exemplos:
+- Apenas RMI:
+  - seleção: `rmi-removal`
+  - comportamento esperado: não inventariar JNLP, SOAP, menu-scripts ou ANT além do mínimo contextual.
+- Múltiplas skills:
+  - seleção: `menu-scripts`, `jnlp-removal`, `soap-removal`
+  - comportamento esperado: inventariar somente os itens necessários para essas três jornadas.
 
 ### Gate de decisão para remoções (obrigatório)
 
@@ -147,7 +161,8 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 - Quando necessário, complemente no Chat com referência explícita da skill (`skills/skill-rmi-removal.md`).
 
 #### Exemplos de prompts no Copilot Chat (VS Code)
-- "Execute a skill `discovery` considerando este projeto e gere saída em `.migration/outputs/discovery-report.md`."
+- "Execute a skill `discovery` considerando este projeto, faça primeiro o questionário de seleção e rode somente `rmi-removal`."
+- "Execute a skill `discovery` considerando este projeto, faça o questionário de seleção e rode apenas `menu-scripts`, `jnlp-removal` e `soap-removal`."
 - "Com base no discovery, rode `menu-scripts` e gere SQL de auditoria, desativação e remoção."
 - "Aplique `jnlp-removal` e liste evidências de que não restou referência ativa fora de documentação."
 - "Aplique `soap-removal` e gere inventário de endpoints/WSDL/dependências com plano incremental SOAP → REST."
@@ -174,7 +189,8 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 
 #### Exemplos de prompts no Copilot Chat (IntelliJ)
 - Dica: para melhor resultado no Chat, cite a skill por caminho (ex.: `skills/skill-discovery.md`) para ancorar o contexto.
-- "Use o fluxo da squad: discovery → menu-scripts → jnlp-removal → rmi-removal → soap-removal → ant-migration. Comece pelo discovery."
+- "Inicie com `skills/skill-discovery.md`, aplique questionário inicial e selecione apenas `rmi-removal`."
+- "Inicie com `skills/skill-discovery.md`, aplique questionário inicial e selecione `menu-scripts`, `jnlp-removal` e `soap-removal`."
 - "Analise este módulo e gere checklist de remoção de RMI com critérios de aceite."
 - "Aplique `skills/skill-soap-removal.md` e gere inventário de endpoints/WSDL/dependências Axis/JAX-WS com plano de migração para REST."
 - "Se houver dependência oculta em remoção de JNLP/RMI/SOAP, pare e apresente opções com impacto para decisão do PO."

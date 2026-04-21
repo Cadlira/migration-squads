@@ -19,12 +19,13 @@ Use este procedimento quando:
 
 ### Entradas (questionário base da discovery)
 Use como referência o conteúdo de `skills/skill-discovery.md`:
-1. Caminho local do projeto legado.
-2. Lista de módulos/satélites acoplados.
-3. Versão Java e servidor de aplicação.
-4. Dados de conexão PostgreSQL (sem expor senha em texto plano).
-5. Tabelas/colunas de menu e permissões.
-6. Restrições de deploy e janela de corte.
+1. Seleção inicial de skills que serão executadas (uma ou múltiplas): `menu-scripts`, `jnlp-removal`, `rmi-removal`, `soap-removal`, `ant-migration`.
+2. Caminho local do projeto legado.
+3. Lista de módulos/satélites acoplados.
+4. Versão Java e servidor de aplicação.
+5. Dados de conexão PostgreSQL (sem expor senha em texto plano).
+6. Tabelas/colunas de menu e permissões.
+7. Restrições de deploy e janela de corte.
 
 ### Contexto mínimo que deve ser informado no prompt
 - que a skill é a central (`skills/skill-discovery.md`);
@@ -50,7 +51,10 @@ Considere esse projeto como alvo e gere os artefatos em <caminho-absoluto-do-pro
 ```
 
 ### 3) Responda o questionário da discovery
-Preencha os itens solicitados (módulos, Java/servidor de aplicação, banco, tabelas de menu, restrições de deploy).
+Primeiro, selecione quais skills serão executadas nesta rodada (uma ou múltiplas).  
+Depois, preencha os itens solicitados (módulos, Java/servidor de aplicação, banco, tabelas de menu, restrições de deploy).
+
+> Eficiência para legados grandes: a discovery deve pesquisar somente o necessário para as skills selecionadas.
 
 > Segurança: não informe senha de banco em texto plano no chat. Use variável de ambiente (`database.passwordEnv`) no `.migration/settings.local.json` (detalhado no passo 5) e mantenha essa configuração fora de versionamento.
 
@@ -66,7 +70,7 @@ No projeto consumidor:
    - Garanta no `.gitignore` do projeto consumidor a regra `.migration/settings.local.json`.
    - Configure o acesso ao banco com `database.passwordEnv` (ex.: `PGPASSWORD`) em vez de senha em texto plano.
 2. Mantenha `.migration/outputs/` como trilha de evidências;
-3. Use o discovery report para iniciar as próximas skills (menu-scripts, jnlp-removal, rmi-removal, soap-removal, ant-migration).
+3. Use o discovery report para iniciar apenas as skills selecionadas no questionário inicial.
 
 ## Exemplos de comandos/prompts
 
@@ -75,7 +79,8 @@ Informe o caminho da skill explicitamente para reduzir ambiguidades. Em geral o 
 
 ```text
 Preciso executar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em <caminho-absoluto-do-projeto>.
-Me conduza pelo questionário e gere os outputs em <caminho-absoluto-do-projeto>/.migration/outputs/.
+Primeiro, me conduza pelo questionário inicial de seleção de skills e selecione apenas rmi-removal.
+Depois, gere os outputs em <caminho-absoluto-do-projeto>/.migration/outputs/.
 ```
 
 ### Copilot CLI
@@ -88,12 +93,14 @@ gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para 
 ### Prompt para múltiplos satélites
 ```text
 Execute a discovery para <caminho-absoluto-atendimento>, considerando satélites <caminho-absoluto-atendimento-api> e <caminho-absoluto-atendimento-batch>.
-Consolide riscos e ordem recomendada das skills em .migration/outputs/discovery-report.md no Atendimento.
+No questionário inicial, selecione menu-scripts, jnlp-removal e soap-removal.
+Consolide riscos e ordem recomendada somente para as skills selecionadas em .migration/outputs/discovery-report.md no Atendimento.
 ```
 
 ## Checklist rápido
 
 - [ ] Caminho absoluto do projeto alvo informado
+- [ ] Seleção inicial de skills confirmada (uma ou múltiplas)
 - [ ] Questionário da discovery respondido
 - [ ] Outputs gerados em `<projeto-alvo>/.migration/outputs/`
 - [ ] Segredos fora de versionamento e sem senha em texto plano
