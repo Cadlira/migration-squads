@@ -12,6 +12,7 @@ Este diretório é o ponto de integração local dos projetos consumidores da in
    - ⚠️ **Obrigatório no projeto consumidor:** adicionar a linha abaixo no `.gitignore`, sem alterações:
      `.migration/settings.local.json`
    - Falhar nesse passo pode expor credenciais e configurações sensíveis.
+   - Observação: este repositório central já ignora esse arquivo, mas projetos consumidores em repositórios separados precisam repetir essa regra localmente.
 2. Preencher path do projeto, módulos satélites e metadados de banco.
 3. Rodar `discovery` usando a configuração local.
 4. Executar skills na sequência recomendada pelo discovery.
