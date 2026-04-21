@@ -12,7 +12,7 @@ Gerar scripts SQL para auditoria, desativação e remoção de menus ligados a J
 ## Modelo base
 ```sql
 -- 001_auditoria.sql
-SELECT id, nome, url, status
+SELECT id, name, url, status
 FROM menu
 WHERE url ILIKE '%jnlp%';
 

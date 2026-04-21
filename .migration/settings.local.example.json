@@ -1,5 +1,5 @@
 {
-  "projectPath": "/caminho/absoluto/do/projeto",
+  "projectPath": "/absolute/path/to/project",
   "satellites": ["atendimento", "empresa", "common", "controleacesso", "controleacessoweb", "utilweb", "infra"],
   "database": {
     "host": "localhost",
