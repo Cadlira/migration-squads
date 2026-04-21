@@ -52,7 +52,7 @@ Considere esse projeto como alvo e gere os artefatos em /home/user/dev/Atendimen
 ### 3) Responda o questionário da discovery
 Preencha os itens solicitados (módulos, Java/app server, banco, tabelas de menu, restrições de deploy).
 
-> Segurança: não informe senha de banco em texto plano no chat. Use variável de ambiente (`database.passwordEnv`) e configuração local não versionada.
+> Segurança: não informe senha de banco em texto plano no chat. Use variável de ambiente (`database.passwordEnv`) no `.migration/settings.local.json` (detalhado no passo 5) e mantenha essa configuração fora de versionamento.
 
 ### 4) Valide os outputs no projeto legado
 No projeto `Atendimento`, confira:
@@ -69,12 +69,16 @@ No projeto consumidor:
 ## Exemplos de comandos/prompts
 
 ### Copilot Chat (VS Code / IntelliJ / Eclipse)
+Informe o caminho da skill explicitamente para reduzir ambiguidades. Em geral o orquestrador já está no repositório certo, mas citar `skills/skill-discovery.md` ajuda a ancorar o contexto.
+
 ```text
 Preciso executar a skill discovery central (skills/skill-discovery.md) para o projeto Atendimento em /home/user/dev/Atendimento.
 Me conduza pelo questionário e gere os outputs em /home/user/dev/Atendimento/.migration/outputs/.
 ```
 
 ### Copilot CLI
+Use o CLI como apoio para gerar/validar comandos e prompts. Para condução completa da skill, prefira Copilot Chat na IDE.
+
 ```sh
 gh copilot suggest "Execute a skill discovery de skills/skill-discovery.md para /home/user/dev/Atendimento e liste entradas necessárias e outputs esperados"
 ```
