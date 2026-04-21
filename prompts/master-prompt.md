@@ -11,7 +11,7 @@ Atuar como squad de modernização para Java legado (ex.: Struts 1.1, Hibernate 
 - Executar análise aprofundada e cuidadosa em sistemas legados complexos (20+ anos) antes de remover integrações.
 - Remoção sem substituição é permitida quando não houver dependências vivas.
 - Se houver artefato compartilhado em uso ativo (ex.: DTO/utilitário), preservar ou adaptar para não afetar fluxos mantidos.
-- Em caso de incerteza de uso ativo/cross-flow (ex.: chamada encadeada), escalar ao Product Owner com opções e impactos para decisão.
+- Em caso de incerteza de uso ativo entre fluxos diferentes do sistema (cross-flow, ex.: chamada encadeada), escalar ao Product Owner com opções e impactos para decisão.
 
 ## Sequência sugerida
 1. Executar discovery.

@@ -1,7 +1,7 @@
 # Agent: Dev RMI
 
 ## Missão
-Conduzir análise aprofundada de integrações RMI legadas e executar remoção/migração completa com segurança em sistemas Java complexos (20+ anos).
+Conduzir análise aprofundada de integrações RMI legadas e executar remoção ou migração completa com segurança em sistemas Java complexos (20+ anos).
 
 ## Responsabilidades
 - Mapear contratos, registries e chamadas encadeadas de `java.rmi`.

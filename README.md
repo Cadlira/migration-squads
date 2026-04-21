@@ -76,11 +76,13 @@ Para novos devs/squads, siga esta ordem:
 
 ### Gate de decisão para remoções (obrigatório)
 
-Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: chamada encadeada em código que permanece), a squad deve:
+Neste contexto, "uso ativo" significa referência ainda utilizada por funcionalidade mantida (ex.: chamada em runtime, API/tela em produção, job ativo ou dependência de módulo satélite em operação).
+
+Em qualquer skill de remoção (JNLP/RMI/SOAP), se houver dúvida sobre uso ativo (ex.: serviço RMI removido, mas um endpoint REST mantido ainda instancia o mesmo DTO/utilitário), a squad deve:
 
 1. pausar a remoção;
 2. escalar ao Product Owner;
-3. apresentar opções com impactos técnicos e de negócio para decisão do usuário.
+3. apresentar opções com impactos técnicos e de negócio para decisão do stakeholder de negócio responsável.
 
 Se não houver dúvida e não existir dependência viva fora do contexto removido, a squad tem autonomia para remoção completa sem substituição.
 
@@ -100,7 +102,7 @@ Para cenários com alto acoplamento e legado crítico, use:
 4. Mapear pontos de integração (clientes gerados, stubs, handlers, gateways e jobs).
 5. Definir plano de substituição/migração (ex.: REST) com coexistência controlada.
 6. Executar checklist de revisão técnica, funcional e operacional.
-7. Em incerteza de uso ativo, PO apresenta opções ao usuário com impacto para decisão.
+7. Em incerteza de uso ativo, a squad escala ao Product Owner, que apresenta opções ao usuário com impacto para decisão.
 8. Registrar evidências em outputs locais (`soap-inventory.md`, `migration-plan.md`, `validation-checklist.md`).
 
 ## Guia rápido para projeto satélite/externo (ex.: Atendimento)
@@ -146,7 +148,7 @@ Esse guia detalha o passo a passo com exemplos de comandos/prompts, orientaçõe
 - "Com base no discovery, rode `menu-scripts` e gere SQL de auditoria, desativação e remoção."
 - "Aplique `jnlp-removal` e liste evidências de que não restou referência ativa fora de documentação."
 - "Aplique `soap-removal` e gere inventário de endpoints/WSDL/dependências com plano incremental SOAP → REST."
-- "Se houver incerteza de uso ativo na remoção, escale ao Product Owner com opções e impactos antes de alterar."
+- "Se houver incerteza de uso ativo na remoção (ex.: análise estática indica uso potencial, mas comportamento em runtime não está confirmado), escale ao Product Owner com opções e impactos antes de alterar."
 
 #### Exemplos de uso no terminal (Copilot CLI)
 - `gh copilot suggest "listar arquivos .jnlp e imports javax.jnlp neste projeto"`
@@ -205,7 +207,7 @@ Como este trabalho é focado em modernização de sistemas legados Java, o uso d
 - "Aplique `skills/skill-jnlp-removal.md` e liste arquivos/referências removíveis com baixo risco."
 - "Com base no discovery, execute `skills/skill-rmi-removal.md` e proponha plano incremental."
 - "Com base no discovery, execute `skills/skill-soap-removal.md` e proponha migração SOAP → REST com etapas reversíveis."
-- "Sempre que houver dúvida de uso ativo, escale ao PO com alternativas e impactos antes de remover."
+- "Sempre que houver dúvida de uso ativo, escale ao Product Owner (PO) com alternativas e impactos antes de remover."
 - "Use `skills/skill-ant-migration.md` e proponha estratégia de build reproduzível no CI."
 
 ![Fluxo ilustrativo Eclipse + Copilot](docs/images/copilot-eclipse-flow.svg)

@@ -7,7 +7,7 @@ Remover completamente integrações SOAP/Web Services legadas com segurança e r
 - Preservar operação em sistemas Java complexos e acoplados (20+ anos).
 - É permitido remover SOAP sem substituição quando não houver dependências vivas fora do contexto removido.
 - Artefatos compartilhados com uso ativo em fluxos mantidos devem ser preservados ou adaptados.
-- Em incerteza de uso ativo/cross-flow, pausar e escalar ao Product Owner para decisão explícita.
+- Em incerteza de uso ativo entre módulos/fluxos diferentes do sistema, pausar e escalar ao Product Owner para decisão explícita.
 
 ## Quando usar
 - Há uso de SOAP como cliente e/ou provedor no legado.
@@ -39,7 +39,7 @@ Remover completamente integrações SOAP/Web Services legadas com segurança e r
 6. **Execução controlada**
     - Migrar por operação/módulo com entregas pequenas.
     - Remover chamadas SOAP e dependências do fluxo descontinuado após validação de não impacto nos fluxos mantidos.
-    - Se houver incerteza de uso ativo/cross-flow, interromper remoção e escalar ao Product Owner com opções e impactos.
+    - Se houver incerteza de uso ativo entre módulos/fluxos diferentes, interromper remoção e escalar ao Product Owner com opções e impactos.
 7. **Fechamento técnico**
    - Consolidar evidências, pendências e riscos residuais.
 
